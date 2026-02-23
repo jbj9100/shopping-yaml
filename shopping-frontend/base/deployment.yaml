@@ -20,7 +20,7 @@ spec:
       - name: shopping-dev-frontend
         image: registry.example.com/shopping-dev-frontend/frontend:v1
         ports:
-        - containerPort: 80
+        - containerPort: 8080
         volumeMounts:
         - name: shopping-nginx-config
           mountPath: /etc/nginx/nginx.conf
