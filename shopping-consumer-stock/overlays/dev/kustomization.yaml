@@ -1,0 +1,9 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: shopping-dev-consumer-stock
+resources:
+  - ../../base
+images:
+  - name: registry.example.com/shopping-dev-consumer-stock/consumer-stock
+    digest: sha256:39f1633b734e9d418b3cb8cd6f55d0d3dfc722f1b19196b9496d1e73d2489f55
+    newName: registry.example.com/shopping-dev-consumer-stock/consumer-stock

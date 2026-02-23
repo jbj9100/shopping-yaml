@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shopping-dev-publisher
+  namespace: shopping-dev-publisher
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: shopping-dev-publisher
+  template:
+    metadata:
+      labels:
+        app: shopping-dev-publisher
+      annotations:  
+        instrumentation.opentelemetry.io/inject-python: "true"        
+    spec:
+      containers:
+      - name: shopping-dev-publisher
+        image: registry.example.com/shopping-dev-publisher/publisher:v1
+        envFrom:
+        - configMapRef:
+            name: shopping-dev-publisher-config
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+          limits:
+            memory: "256Mi"
+            cpu: "200m"

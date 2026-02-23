@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shopping-dev-frontend
+  namespace: shopping-dev-frontend
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: shopping-dev-frontend
+  template:
+    metadata:
+      labels:
+        app: shopping-dev-frontend
+      annotations:  
+        instrumentation.opentelemetry.io/inject-python: "true"             
+    spec:
+      containers:
+      - name: shopping-dev-frontend
+        image: registry.example.com/shopping-dev-frontend/frontend:v1
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: shopping-nginx-config
+          mountPath: /etc/nginx/nginx.conf
+          subPath: nginx.conf
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+          limits:
+            memory: "256Mi"
+            cpu: "200m"
+      volumes:
+      - name: shopping-nginx-config
+        configMap:
+          name: shopping-nginx-config

@@ -1,0 +1,9 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: shopping-dev-websocket
+resources:
+  - ../../base
+images:
+  - name: registry.example.com/shopping-dev-websocket/websocket
+    digest: sha256:46c8e459ed28c96182f5e6ab5edac79313db7543c689f4e577d983316c40dd8f
+    newName: registry.example.com/shopping-dev-websocket/websocket

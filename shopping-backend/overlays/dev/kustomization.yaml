@@ -1,0 +1,9 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: shopping-dev-backend
+resources:
+  - ../../base
+images:
+  - name: registry.example.com/shopping-dev-backend/backend
+    digest: sha256:36665458cd742cb13f751327a160b34aed7d132e0aef36ba797576c2a9eca98b
+    newName: registry.example.com/shopping-dev-backend/backend

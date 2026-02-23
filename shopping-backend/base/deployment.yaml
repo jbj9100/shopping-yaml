@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shopping-dev-backend
+  labels:
+    app: shopping-dev-backend
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: shopping-dev-backend
+  template:
+    metadata:
+      labels:
+        app: shopping-dev-backend
+      annotations:
+        instrumentation.opentelemetry.io/inject-python: "true"  
+    spec:
+      containers:
+      - name: shopping-dev-backend
+        image: registry.example.com/shopping-dev-backend/backend:v1
+        ports:
+        - containerPort: 8000
+          name: http
+        envFrom:
+        - configMapRef:
+            name: shopping-dev-backend-config
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8000
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8000
+          initialDelaySeconds: 5
+          periodSeconds: 5

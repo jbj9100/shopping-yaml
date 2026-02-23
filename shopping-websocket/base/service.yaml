@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: shopping-dev-websocket-service
+  namespace: shopping-dev-websocket
+spec:
+  selector:
+    app: shopping-dev-websocket
+  type: ClusterIP
+  ports:
+  - port: 8001
+    targetPort: 8001
+    protocol: TCP

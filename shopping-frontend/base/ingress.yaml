@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: shopping
+  namespace: shopping-dev-frontend
+  annotations:
+    test: 1
+    haproxy.org/backend-config-snippet: |
+      http-response replace-value Location ^http://(.*)$ https://\1
+spec:
+  ingressClassName: haproxy1
+  tls:
+  - hosts:
+    - shopping.project.com
+    secretName: shopping-tls
+  rules:
+  - host: shopping.project.com
+    http:
+      paths:
+      - backend:
+          service:
+            name: shopping-dev-frontend-service
+            port:
+              number: 80
+        path: /
+        pathType: Prefix
