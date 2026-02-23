@@ -5,5 +5,5 @@ resources:
   - ../../base
 images:
   - name: registry.example.com/shopping-dev-frontend/frontend
-    digest: sha256:d0ab0d954305ab6fdcb7f4e27e8ea019e38b57fb31e951dda86f81ef965bec0b
+    digest: sha256:cbab43ac81d87c9f381f513acb20e8dfc1fdb0bbd8fb7ffc1141045bfa8a0bf8
     newName: registry.example.com/shopping-dev-frontend/frontend
