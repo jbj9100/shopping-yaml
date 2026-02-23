@@ -25,6 +25,10 @@ spec:
         - name: shopping-nginx-config
           mountPath: /etc/nginx/nginx.conf
           subPath: nginx.conf
+        - name: cache-vol
+          mountPath: /var/cache/nginx
+        - name: run-vol
+          mountPath: /var/run          
         resources:
           requests:
             memory: "128Mi"
@@ -36,3 +40,7 @@ spec:
       - name: shopping-nginx-config
         configMap:
           name: shopping-nginx-config
+      - name: cache-vol
+        emptyDir: {}
+      - name: run-vol
+        emptyDir: {}
