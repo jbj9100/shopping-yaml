@@ -5,7 +5,7 @@ metadata:
   labels:
     app: shopping-dev-backend
 spec:
-  replicas: 2
+  replicas: 3
   revisionHistoryLimit: 3
   selector:
     matchLabels:
