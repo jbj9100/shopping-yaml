@@ -5,5 +5,5 @@ resources:
   - ../../base
 images:
   - name: registry.example.com/shopping-dev-websocket/websocket
-    digest: deny-test
+    digest: sha256:c54875be23caaf63ef8af2e2ce6b47285d96979bcc362dd300dda9f3b2f6badc
     newName: registry.example.com/shopping-dev-websocket/websocket
