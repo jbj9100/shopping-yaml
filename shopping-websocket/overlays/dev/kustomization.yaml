@@ -5,8 +5,5 @@ resources:
   - ../../base
 images:
   - name: registry.example.com/shopping-dev-websocket/websocket
-    digest: sha256:59d2c23a617c90a09b133ca796181e72a37a95ddcc6fc563cb53446e51378e28
+    digest: sha256:59d2c23a617c90a09b133ca796181e72a37a95ddcc6fc563cb53446e51378e2
     newName: registry.example.com/shopping-dev-websocket/websocket
-
-commonAnnotations:
-  external-change: "true"
