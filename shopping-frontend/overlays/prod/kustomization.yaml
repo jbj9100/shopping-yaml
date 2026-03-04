@@ -4,5 +4,5 @@ namespace: shopping-prod-frontend
 resources:
   - ../../base
 
-patchesStrategicMerge:
-  - patches/image-digest.yaml
+patches:
+  - path: patches/image-digest.yaml

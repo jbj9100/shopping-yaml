@@ -4,5 +4,5 @@ namespace: shopping-dev-publisher
 resources:
   - ../../base
 
-patchesStrategicMerge:
-  - patches/image-digest.yaml
+patches:
+  - path: patches/image-digest.yaml

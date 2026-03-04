@@ -3,6 +3,6 @@ kind: Kustomization
 namespace: shopping-prod-websocket
 resources:
   - ../../base
-
-patchesStrategicMerge:
-  - patches/image-digest.yaml
+  
+patches:
+  - path: patches/image-digest.yaml  

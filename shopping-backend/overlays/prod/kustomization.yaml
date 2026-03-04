@@ -3,6 +3,5 @@ kind: Kustomization
 namespace: shopping-prod-backend
 resources:
   - ../../base
-
-patchesStrategicMerge:
-  - patches/image-digest.yaml
+patches:
+  - path: patches/image-digest.yaml

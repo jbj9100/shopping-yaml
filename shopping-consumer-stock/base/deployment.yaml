@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: shopping-dev-consumer-stock
-  namespace: shopping-dev-consumer-stock
 spec:
   replicas: 1
   revisionHistoryLimit: 3

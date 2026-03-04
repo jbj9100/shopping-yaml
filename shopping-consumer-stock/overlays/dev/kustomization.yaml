@@ -4,5 +4,5 @@ namespace: shopping-dev-consumer-stock
 resources:
   - ../../base
 
-patchesStrategicMerge:
-  - patches/image-digest.yaml
+patches:
+  - path: patches/image-digest.yaml
