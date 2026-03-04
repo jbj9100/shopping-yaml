@@ -7,4 +7,4 @@ spec:
     spec:
       containers:
         - name: shopping-dev-websocket
-          image: registry.example.com/shopping-dev-websocket/websocket@sha256:d1cab70d6e911ea6882810633ac46f3f16da6c07c4e59fe8127283e4d24cd56a
+          image: registry.example.com/shopping-dev-websocket/websocket@sha256:fde09475eca65c446b38bfa713aba4116647bfe1c19b77d55aa9ce9309890654
