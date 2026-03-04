@@ -1,0 +1,35 @@
+stages: [policy]
+
+digest_guard:
+  stage: policy
+  image: alpine:3.20
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+  before_script:
+    - apk add --no-cache git
+  script: |
+    set -euo pipefail
+
+    # MR 파이프라인이 아니면 종료(안전)
+    [ -n "${CI_MERGE_REQUEST_TARGET_BRANCH_NAME:-}" ] || { echo "Not an MR pipeline"; exit 0; }
+
+    git fetch origin "$CI_MERGE_REQUEST_TARGET_BRANCH_NAME" --depth=50
+    target="origin/$CI_MERGE_REQUEST_TARGET_BRANCH_NAME"
+
+    files="$(git diff --name-only "$target...$CI_COMMIT_SHA")"
+
+    echo "Changed files:"
+    echo "$files"
+
+    echo "$files" | grep -E '^shopping-(websocket|backend|frontend|consumer-analytics|consumer-stock|publisher)/overlays/(dev|prod)/patches/image-digest\.yaml$' >/dev/null || exit 0
+
+    actor="${GITLAB_USER_LOGIN:-${GITLAB_USER_NAME:-${CI_COMMIT_AUTHOR:-}}}"
+    echo "Actor: $actor"
+    [ -n "$actor" ] || { echo "❌ actor unknown; blocking digest change"; exit 1; }
+
+    if [ "$actor" != "jenkins-bot" ]; then
+      echo "❌ digest 파일은 jenkins-bot만 변경 가능합니다."
+      exit 1
+    fi
+
+    echo "✅ digest change allowed (jenkins-bot)"

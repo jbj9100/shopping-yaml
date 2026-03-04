@@ -1,0 +1,10 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shopping-prod-websocket  
+spec:
+  template:
+    spec:
+      containers:
+        - name: shopping-prod-websocket
+          image: registry.example.com/shopping-prod-websocket/websocket@sha256:REPLACEME

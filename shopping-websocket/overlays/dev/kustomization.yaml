@@ -3,7 +3,6 @@ kind: Kustomization
 namespace: shopping-dev-websocket
 resources:
   - ../../base
-images:
-  - name: registry.example.com/shopping-dev-websocket/websocket
-    digest: sha256:ad65970bc595fbdd21abad9e973b09328a65dbeb02a45d08e8c3a53059dcf62a
-    newName: registry.example.com/shopping-dev-websocket/websocket
+
+patchesStrategicMerge:
+  - patches/image-digest.yaml
