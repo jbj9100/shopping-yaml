@@ -3,7 +3,6 @@ kind: Kustomization
 namespace: shopping-dev-publisher
 resources:
   - ../../base
-images:
-  - name: registry.example.com/shopping-dev-publisher/publisher
-    digest: sha256:462ffd7dd6fac7d6de5c64c50fb2c03ba0128e5bb565f9bc75b0139b83c57404
-    newName: registry.example.com/shopping-dev-publisher/publisher
+
+patchesStrategicMerge:
+  - patches/image-digest.yaml

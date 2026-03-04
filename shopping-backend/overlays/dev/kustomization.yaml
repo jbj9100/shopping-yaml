@@ -3,7 +3,6 @@ kind: Kustomization
 namespace: shopping-dev-backend
 resources:
   - ../../base
-images:
-  - name: registry.example.com/shopping-dev-backend/backend
-    digest: sha256:285c511607049b255daf3f03faa1fcc5660a910022675a33948c9ce2b1991806
-    newName: registry.example.com/shopping-dev-backend/backend
+
+patchesStrategicMerge:
+  - patches/image-digest.yaml

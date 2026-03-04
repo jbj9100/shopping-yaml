@@ -1,0 +1,10 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shopping-dev-backend  
+spec:
+  template:
+    spec:
+      containers:
+        - name: shopping-dev-backend
+          image: registry.example.com/shopping-dev-backend/backend@sha256:REPLACEME

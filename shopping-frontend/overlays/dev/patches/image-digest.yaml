@@ -1,0 +1,10 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shopping-dev-frontend  
+spec:
+  template:
+    spec:
+      containers:
+        - name: shopping-dev-frontend
+          image: registry.example.com/shopping-dev-frontend/frontend@sha256:REPLACEME

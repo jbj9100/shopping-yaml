@@ -1,0 +1,10 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shopping-dev-publisher  
+spec:
+  template:
+    spec:
+      containers:
+        - name: shopping-dev-publisher
+          image: registry.example.com/shopping-dev-publisher/publisher@sha256:REPLACEME

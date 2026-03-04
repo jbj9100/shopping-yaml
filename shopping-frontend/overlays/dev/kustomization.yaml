@@ -3,7 +3,6 @@ kind: Kustomization
 namespace: shopping-dev-frontend
 resources:
   - ../../base
-images:
-  - name: registry.example.com/shopping-dev-frontend/frontend
-    digest: sha256:c2ed8160821f42d3930543e94162314a3c78815183bdaae09372ccb0216802f6
-    newName: registry.example.com/shopping-dev-frontend/frontend
+
+patchesStrategicMerge:
+  - patches/image-digest.yaml

@@ -1,0 +1,10 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shopping-prod-consumer-analytics  
+spec:
+  template:
+    spec:
+      containers:
+        - name: shopping-prod-consumer-analytics
+          image: registry.example.com/shopping-prod-consumer-analytics/consumer-analytics@sha256:REPLACEME

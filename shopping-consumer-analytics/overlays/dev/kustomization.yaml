@@ -3,7 +3,6 @@ kind: Kustomization
 namespace: shopping-dev-consumer-analytics
 resources:
   - ../../base
-images:
-  - name: registry.example.com/shopping-dev-consumer-analytics/consumer-analytics
-    digest: sha256:010fdcbcd50e2c768bf76d34f4f85b187f313813d5adb4778f627b305d601add
-    newName: registry.example.com/shopping-dev-consumer-analytics/consumer-analytics
+
+patchesStrategicMerge:
+  - patches/image-digest.yaml
