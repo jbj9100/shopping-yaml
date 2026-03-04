@@ -1,0 +1,2 @@
+/shopping-consumer-analytics/overlays/dev/patches/image-digest.yaml   @jenkins-argo @jenkins-bot
+/shopping-consumer-analytics/overlays/prod/patches/image-digest.yaml  @jenkins-argo @jenkins-bot

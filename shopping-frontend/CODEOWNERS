@@ -1,0 +1,2 @@
+/shopping-frontend/overlays/dev/patches/image-digest.yaml   @jenkins-argo @jenkins-bot
+/shopping-frontend/overlays/prod/patches/image-digest.yaml  @jenkins-argo @jenkins-bot
